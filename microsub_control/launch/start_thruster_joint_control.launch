@@ -1,0 +1,5 @@
+<launch>
+<node name="controller_spawner" pkg="controller_manager" type="spawner" respawn="false"
+output="screen" ns="/microsub" args="joint_state_controller
+          thruster0_position_controller"/>
+</launch>

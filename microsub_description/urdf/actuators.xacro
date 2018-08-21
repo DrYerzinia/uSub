@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+    <xacro:thruster_macro
+      robot_namespace="${namespace}"
+      thruster_id="0">
+      <axis xyz="0 1 0"/>
+      <origin xyz="0 0.11 0" rpy="0 -1.5707963 0" />
+    </xacro:thruster_macro>
+    <xacro:thruster_macro
+      robot_namespace="${namespace}"
+      thruster_id="1">
+      <axis xyz="0 1 0"/>
+      <origin xyz="0 -0.11 0" rpy="0 -1.5707963 0" />
+    </xacro:thruster_macro>
+    <xacro:thruster_macro
+      robot_namespace="${namespace}"
+      thruster_id="2">
+      <axis xyz="0 0 1"/>
+      <origin xyz="-0.09 0 0" rpy="0 -1.5707963 0" />
+    </xacro:thruster_macro>
+    <xacro:thruster_macro
+      robot_namespace="${namespace}"
+      thruster_id="3">
+      <axis xyz="0 0 1"/>
+      <origin xyz="0.09 0 0" rpy="0 -1.5707963 0" />
+    </xacro:thruster_macro>
+
+</robot>

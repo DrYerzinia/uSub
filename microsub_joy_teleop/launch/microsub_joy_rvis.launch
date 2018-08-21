@@ -1,0 +1,48 @@
+<launch>
+
+  <!-- Debug flag -->
+  <arg name="debug" default="0"/>
+
+  <!-- Vehicle's initial pose -->
+  <arg name="x"     default="0"/>
+  <arg name="y"     default="0"/>
+  <arg name="z"     default="-20"/>
+  <arg name="roll"  default="0"/>
+  <arg name="pitch" default="0"/>
+  <arg name="yaw"   default="0"/>
+
+  <arg name="use_geodetic" default="false"/>
+  <arg name="latitude" default="0"/>
+  <arg name="longitude" default="0"/>
+  <arg name="depth" default="0"/>
+
+  <arg name="latitude_ref" default="0"/>
+  <arg name="longitude_ref" default="0"/>
+  <arg name="altitude_ref" default="0"/>
+
+  <!-- Mode to open different robot configurations as set the in file
+  nomenclature standard for the files in /robots
+
+  /robots/<mode>.xacro
+  -->
+  <arg name="mode" default="default"/>
+
+  <!-- Vehicle's namespace -->
+  <arg name="namespace" default="microsub"/>
+
+  <arg name="world_frame" default="world"/>
+
+  <param name="robot_description"
+    command="$(find xacro)/xacro --inorder '$(find microsub_description)/robots/default.xacro'  debug:=$(arg debug) namespace:=$(arg namespace)" />
+
+  <!-- <include file="$(find microsub_control)/launch/start_thruster_manager.launch"/> -->
+
+  <!-- send fake joint values -->
+  <node name="microsub_joy_teleop" pkg="microsub_joy_teleop" type="microsub_joy_teleop.py"/>
+
+  <!-- Combine joint values -->
+  <node name="robot_state_publisher" pkg="robot_state_publisher" type="state_publisher"/>
+
+  <node name="rviz" pkg="rviz" type="rviz"/>
+
+</launch>
